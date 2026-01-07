@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Свадебное приглашение</title>
+
+  <!-- Шрифты (бесплатные Google Fonts) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <main class="page">
+
+    <!-- 1) Билет -->
+    <section class="section section--paper hero" id="hero">
+      <div class="container">
+        <article class="ticket" aria-label="Свадебный билет">
+		<div class="ticket__cap" aria-hidden="true"></div>
+
+            <div class="ticket__topTitle">СВАДЕБНЫЙ БИЛЕТ</div>
+
+            <div class="ticket__perforation ticket__perforation--top" aria-hidden="true">
+           <span class="ticket__dash"></span>
+       </div>
+          <div class="ticket__globe" aria-hidden="true">
+  <div class="globeStage">
+    <!-- Глобус -->
+    <svg class="globeSvg" viewBox="0 0 420 420" aria-hidden="true">
+      <defs>
+        <clipPath id="clipGlobe">
+          <circle cx="210" cy="210" r="165"></circle>
+        </clipPath>
+      </defs>
+
+      <!-- внешний круг -->
+      <circle cx="210" cy="210" r="165" fill="none" class="globeStrokeOuter"></circle>
+
+      <!-- сетка + материки внутри круга -->
+      <g clip-path="url(#clipGlobe)" fill="none" class="globeStrokeInner">
+        <!-- параллели -->
+        <ellipse cx="210" cy="210" rx="165" ry="130"></ellipse>
+        <ellipse cx="210" cy="210" rx="165" ry="95"></ellipse>
+        <ellipse cx="210" cy="210" rx="165" ry="60"></ellipse>
+        <line x1="45" y1="210" x2="375" y2="210"></line>
+
+        <!-- меридианы -->
+        <ellipse cx="210" cy="210" rx="130" ry="165"></ellipse>
+        <ellipse cx="210" cy="210" rx="95" ry="165"></ellipse>
+        <ellipse cx="210" cy="210" rx="60" ry="165"></ellipse>
+
+        <!-- "лучи" вверху (полюс), как на примере -->
+        <g class="globeStrokeSoft">
+          <line x1="210" y1="45" x2="210" y2="110"></line>
+          <line x1="210" y1="45" x2="175" y2="122"></line>
+          <line x1="210" y1="45" x2="245" y2="122"></line>
+          <line x1="210" y1="45" x2="150" y2="145"></line>
+          <line x1="210" y1="45" x2="270" y2="145"></line>
+          <line x1="210" y1="45" x2="135" y2="165"></line>
+          <line x1="210" y1="45" x2="285" y2="165"></line>
+        </g>
+
+        <!-- материки (стилизовано тонкой линией) -->
+        <!-- Евразия + Африка -->
+        <path d="M118 165
+                 C150 135, 195 125, 220 138
+                 C238 147, 250 140, 270 132
+                 C292 123, 320 135, 328 158
+                 C335 180, 360 184, 374 205
+                 C388 228, 372 255, 344 258
+                 C316 261, 300 236, 277 236
+                 C252 236, 238 263, 212 280
+                 C188 296, 168 280, 168 258
+                 C168 238, 144 232, 130 218
+                 C112 200, 98 182, 118 165 Z"></path>
+
+        <!-- Северная Америка -->
+        <path d="M78 155
+                 C92 140, 120 132, 140 144
+                 C155 153, 165 150, 176 146
+                 C186 142, 196 150, 198 162
+                 C200 174, 188 184, 176 186
+                 C160 188, 152 176, 142 176
+                 C128 176, 120 188, 108 196
+                 C96 204, 82 196, 82 184
+                 C82 172, 70 166, 66 160
+                 C62 154, 70 150, 78 155 Z"></path>
+
+        <!-- Южная Америка -->
+        <path d="M152 268
+                 C162 260, 176 262, 184 274
+                 C192 286, 186 306, 170 310
+                 C154 314, 144 298, 146 284
+                 C147 276, 148 272, 152 268 Z"></path>
+
+        <!-- Австралия -->
+        <path d="M308 288
+                 C322 282, 340 292, 342 306
+                 C344 320, 330 330, 316 326
+                 C304 322, 298 304, 308 288 Z"></path>
+      </g>
+    </svg>
+
+    <!-- Самолётик, который летает вокруг -->
+    <div class="airOrbit" aria-hidden="true">
+      <div class="airPlaneLock">
+        <svg class="airPlaneSvg" viewBox="0 0 49 39" aria-hidden="true" fill="#142039">
+  <path d="M40.5625 2.59865C41.8002 4.14412 36.1276 10.6458 27.8404 17.086C19.6377 23.4898 11.9373 27.4997 10.7842 25.9178C9.54662 24.3723 15.2191 17.8707 23.5063 11.4305C31.709 5.02667 39.4094 1.01679 40.5625 2.59865Z"/>
+  <path d="M26.3395 11.2561L15.1321 11.4157L13.076 13.2L20.2008 16.1978L26.3395 11.2561Z"/>
+  <path d="M29.2634 15.6128L27.5571 28.5231L24.6052 31.1081L22.7813 19.6246L29.2634 15.6128Z"/>
+  <path d="M15.4345 20.4347C14.7564 20.7278 5.70271 19.8477 5.70271 19.8477L2.32854 22.8045L11.2896 26.1217L15.4345 20.4347Z"/>
+</svg>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+          <header class="ticket__header">
+            <h1 class="ticket__names">
+              АЛЕКСЕЙ <span class="ticket__amp">&amp;</span> АНАСТАСИЯ
+            </h1>
+          </header>
+
+          <div class="ticket__body">
+            <div class="ticket__side" aria-hidden="true">ОТПРАВЛЕНИЕ</div>
+
+            <div class="ticket__grid" role="list">
+              <div class="ticket__cell" role="listitem">
+                <div class="ticket__label">FLIGHT &amp; DATE</div>
+                <div class="ticket__value">26.02.2026</div>
+              </div>
+
+              <div class="ticket__cell" role="listitem">
+                <div class="ticket__label">CLASS</div>
+                <div class="ticket__value">ПЕРВЫЙ КЛАСС</div>
+              </div>
+
+              <div class="ticket__cell ticket__cell--wide" role="listitem">
+                <div class="ticket__label">TO / DESTINATION</div>
+                <div class="ticket__value">БИЛЕТ В СЧАСТЬЕ</div>
+              </div>
+            </div>
+
+            <div class="stamp" aria-hidden="true">
+              <div class="stamp__inner">
+                <div class="stamp__row">
+                  <span>✈</span><span>0325</span>
+                </div>
+                <div class="stamp__big">СВАДЕБНЫЙ</div>
+                <div class="stamp__big">БИЛЕТ</div>
+                <div class="stamp__heart">♥</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ticket__perforation" aria-hidden="true">
+            <span class="ticket__dash"></span>
+          </div>
+
+          <footer class="ticket__footer">
+            <div class="ticket__footerTitle">СВАДЕБНЫЙ БИЛЕТ</div>
+          </footer>
+        </article>
+      </div>
+    </section>
+
+    <!-- 2) Приветствие -->
+    <section class="section section--navy" id="hello">
+      <div class="container">
+        <h2 class="title title--light">ДОРОГИЕ НАШИ<br>ДРУЗЬЯ И РОДНЫЕ</h2>
+        <p class="text text--light text--center">
+          Это официальное приглашение на нашу свадьбу! А получили вы его потому,
+          что мы очень хотим видеть вас в этот день рядом с нами!
+        </p>
+
+        <figure class="photoCard">
+          <img src="assets/couple.jpg" alt="Фото пары" />
+        </figure>
+      </div>
+    </section>
+
+    <!-- 3) Календарь -->
+    <section class="section section--navy" id="date">
+      <div class="container">
+        <h2 class="title title--light">МЫ ЖДЁМ ВАС</h2>
+        <p class="text text--light text--center">На первом празднике нашей семьи</p>
+
+        <div class="calendarCard" aria-label="Календарь">
+          <div class="calendarCard__month" id="calMonth">ФЕВРАЛЬ</div>
+          <div class="calendarCard__grid" id="calendar" aria-live="polite"></div>
+        </div>
+
+        <div class="bigDate">26.02.2026</div>
+      </div>
+    </section>
+
+    <!-- 4) Место -->
+    <section class="section section--paper" id="place">
+      <div class="container">
+        <h2 class="title">МЕСТО<br>ПРОВЕДЕНИЯ</h2>
+        <p class="text text--center">
+          Дворец бракосочетания №2, Санкт‑Петербург,<br>
+          ул. Фурштатская, 52
+        </p>
+
+       
+        <figure class="photoCard photoCard--paper">
+          <img src="assets/venue.jpg" alt="Фото места проведения" />
+        </figure>
+      </div>
+    </section>
+
+    <!-- 5) Тайминг -->
+    <section class="section section--paper" id="timing">
+      <div class="container">
+        <article class="timing">
+          <h2 class="title title--light">ТАЙМИНГ</h2>
+
+          <div class="timing__grid" role="list">
+            <div class="timing__row" role="listitem">
+              <div class="timing__what">Сбор гостей</div>
+              <div class="timing__time">12:45</div>
+            </div>
+            <div class="timing__row" role="listitem">
+              <div class="timing__what">Церемония регистрации</div>
+              <div class="timing__time">13:00</div>
+            </div>
+            <div class="timing__row" role="listitem">
+              <div class="timing__what">Банкет в ресторане "Граф Цеппелин"</div>
+              <div class="timing__time">15:00</div>
+            </div>
+            <div class="timing__row" role="listitem">
+              <div class="timing__what">Завершение вечера</div>
+              <div class="timing__time">21:00</div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 6) Дресс-код -->
+    <section class="section section--paper" id="dresscode">
+      <div class="container">
+        <h2 class="title">ДРЕСС‑КОД</h2>
+        <p class="text text--center">
+          Строгих ограничений нет,но есть пожелание,чтобы одежда была в спокойных и светлых тонах.
+	  </p>
+         <p class="text text--center">
+         		  Милых дам мы просим не надевать белые наряды, в этот день это цвет невесты.
+        </p>
+       
+        <div class="divider" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <!-- 7) Обратный отсчёт -->
+    <section class="section section--photo" id="countdown" aria-label="Обратный отсчёт">
+      <div class="photoHero">
+        <img src="assets/countdown.jpg" alt="Фото на фоне" />
+        <div class="photoHero__overlay"></div>
+      </div>
+
+      <div class="container container--onPhoto">
+        <div class="countdown">
+          <div class="countdown__title">ДО СВАДЬБЫ ОСТАЛОСЬ</div>
+
+          <div class="countdown__grid" aria-live="polite">
+            <div class="countdown__cell">
+              <div class="countdown__num" id="cdDays">00</div>
+              <div class="countdown__lbl">Дней</div>
+            </div>
+            <div class="countdown__cell">
+              <div class="countdown__num" id="cdHours">00</div>
+              <div class="countdown__lbl">Часа</div>
+            </div>
+            <div class="countdown__cell">
+              <div class="countdown__num" id="cdMinutes">00</div>
+              <div class="countdown__lbl">Минут</div>
+            </div>
+            <div class="countdown__cell">
+              <div class="countdown__num" id="cdSeconds">00</div>
+              <div class="countdown__lbl">Секунд</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8) Пожелания + кнопка подарков -->
+    <section class="section section--paper" id="wishes">
+      <div class="container">
+        <article class="wishCard">
+          <h2 class="title title--light">ПОЖЕЛАНИЯ</h2>
+
+          <p class="text text--light text--center" id="wishText">
+            Будем очень признательны, если Вы воздержитесь от криков «Горько».
+            Ведь поцелуй — это знак выражения чувств, и он не может быть по заказу.
+          </p>
+
+          <div class="wishCard__nav" aria-label="Навигация по пожеланиям">
+            <button class="navBtn" type="button" id="wishPrev" aria-label="Предыдущее">←</button>
+            <div class="wishCard__pos"><span id="wishIndex">1</span> / <span id="wishTotal">3</span></div>
+            <button class="navBtn" type="button" id="wishNext" aria-label="Следующее">→</button>
+          </div>
+
+         
+        </article>
+      </div>
+    </section>
+
+    <!-- 9) Контакты -->
+    <section class="section section--paper" id="contacts">
+      <div class="container">
+        <h2 class="title">КОНТАКТЫ</h2>
+		<p class="text text--center">
+            Пожалуйста,подтвердите ваше присутсвие на нашей садьбе до <span class="dateBlack">12.02.2026</span> по одному из номеров,
+			указанных ниже,а также, можете обращаться к нам по всем вопросам,связанным с мероприятием.
+          </p>
+
+        <div class="contacts">
+          <div class="contact">
+            <div class="contact__role">НЕВЕСТА</div>
+            <div class="contact__name">Анастасия</div>
+            <a class="contact__link" href="tel:+79990000000">+7 (911) 240‑93‑59</a>
+          </div>
+
+          <div class="contact">
+            <div class="contact__role">ЖЕНИХ</div>
+            <div class="contact__name">Алексей</div>
+            <a class="contact__link" href="tel:+79991111111">+7 (911) 942‑03‑32</a>
+          </div>
+        </div>
+
+        <footer class="miniFooter">
+          <div>© Алексей &amp; Анастасия</div>
+        </footer>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Модалка подарков -->
+  <div class="modal" id="giftsModal" aria-hidden="true">
+    <div class="modal__backdrop" data-close="true"></div>
+    
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

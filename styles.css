@@ -1,0 +1,823 @@
+:root{
+  --navy:#0e1b2c;
+  --navy2:#0b1523;
+  --paper:#f6f4ef;
+  --ink:#0c1220;
+  --muted:rgba(14,27,44,.65);
+  --line:rgba(14,27,44,.18);
+  --accent:#b51e25;
+
+  --serif:"Playfair Display", serif;
+  --sans:"Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+  --radius:18px;
+  --shadow:0 12px 30px rgba(0,0,0,.08);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:var(--sans);
+  color:var(--ink);
+  background:var(--paper);
+}
+
+img{max-width:100%; display:block}
+a{color:inherit}
+
+.page{overflow-x:hidden}
+.container{
+  width:min(960px, 92vw);
+  margin:0 auto;
+  padding:34px 0;
+}
+.container--onPhoto{
+  position:relative;
+  z-index:2;
+}
+
+.section{position:relative}
+.section--paper{background:var(--paper)}
+.section--navy{
+  background:linear-gradient(180deg, var(--navy), var(--navy2));
+  color:#fff;
+}
+.section--photo{padding:0}
+
+.title{
+  font-family:var(--serif);
+  font-weight:600;
+  letter-spacing:.04em;
+  text-align:center;
+  font-size:clamp(28px, 5vw, 52px);
+  margin:0 0 14px;
+}
+.title--light{color:#fff}
+
+.text{
+  margin:0 auto 1px;
+  max-width:720px;
+  line-height:1.55;
+  font-size:16px;
+  color:var(--muted);
+}
+.text--center{text-align:center}
+.text--light{color:rgba(255,255,255,.86)}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+
+  padding:14px 18px;
+  border-radius:14px;
+  background:var(--navy);
+  color:#fff;
+  text-decoration:none;
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:var(--shadow);
+  font-weight:600;
+  letter-spacing:.05em;
+
+  margin:10px auto 0;
+  width:min(360px, 92%);
+}
+.btn:active{transform:translateY(1px)}
+.btn--light{
+  background:#f6f4ef;
+  color:var(--navy);
+  border:1px solid rgba(14,27,44,.25);
+}
+
+/* Фото-карточка */
+.photoCard{
+  margin:22px auto 0;
+  width:min(520px, 100%);
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+  border:1px solid rgba(255,255,255,.12);
+}
+.photoCard img{
+  width:100%;
+  height:auto;
+  filter:grayscale(100%);
+}
+.photoCard--paper{
+  border:1px solid rgba(14,27,44,.18);
+}
+
+/* =========================
+   Билет
+   ========================= */
+.ticket{
+  --ticket-bg:#f7f5f1;
+  background:var(--ticket-bg);
+  border:2px solid rgb(13, 26, 43);
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+  position:relative;
+}
+
+/* верх билета: БЕЛЫЙ фон + ТЁМНЫЕ "зубчики" */
+.ticket__cap{
+  height:30px;
+  background:var(--ticket-bg);
+  position:relative;
+
+  /* чтобы дошло до краёв (под рамку) */
+  margin:-2px -2px 0;
+  border-radius:20px 20px 0 0;
+}
+/* тёмные полукруги, свисающие вниз */
+.ticket__cap::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  top:0;
+  height:18px;
+
+  /* круг с центром на верхней границе -> видна нижняя половина */
+  background:
+    radial-gradient(circle at 16px 0px, var(--navy) 14px, transparent 14.6px)
+    0 0 / 32px 32px repeat-x;
+
+  pointer-events:none;
+}
+
+/* Заголовок "СВАДЕБНЫЙ БИЛЕТ" сверху */
+.ticket__topTitle{
+  margin-top:16px;           /* чтобы не наезжало на зубчики */
+  text-align:center;
+  padding:18px 18px 10px;
+
+  font-family:var(--serif);
+  font-size:20px;
+  letter-spacing:.08em;
+  color:var(--navy);
+}
+
+/* Верхняя перфорация под заголовком */
+.ticket__perforation{
+  position:relative;
+  padding:12px 0;
+  background:transparent;
+}
+.ticket__perforation--top{
+  padding:10px 0 14px;
+}
+.ticket__dash{
+  display:block;
+  border-top:3px dashed rgba(14,27,44,.45);
+  margin:0 18px;
+}
+.ticket__perforation::before,
+.ticket__perforation::after{
+  content:"";
+  position:absolute;
+  top:50%;
+  width:28px;
+  height:28px;
+
+  /* как на скрине — тёмные "выступы" по бокам */
+  background:var(--navy);
+  border:0;
+  border-radius:999px;
+  transform:translateY(-50%);
+}
+.ticket__perforation::before{left:-14px}
+.ticket__perforation::after{right:-14px}
+
+/* Глобус + самолётик */
+.globeWrap{
+  position:relative;
+  width:min(320px, 78vw);
+  aspect-ratio:1/1;
+  margin:0 auto;
+}
+
+.globeSvg{
+  width:100%;
+  height:100%;
+  display:block;
+}
+
+/* Орбита: крутим контейнер, самолётик закреплён на окружности */
+.orbit{
+  position:absolute;
+  inset:-18px;          /* насколько орбита больше глобуса */
+  border-radius:50%;
+  animation: orbitSpin 8s linear infinite;
+}
+
+/* Самолётик стоит "на круге" снизу, а орбита его прокручивает */
+.planeSvg{
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:28px;
+  height:28px;
+
+  /* 52% — радиус (насколько далеко от центра), подгоняй при желании */
+  transform: translate(-50%, -50%) translateY(52%) rotate(90deg);
+
+  fill: rgba(14,27,44,.95);
+  filter: drop-shadow(0 6px 10px rgba(0,0,0,.12));
+}
+
+@keyframes orbitSpin{
+  to{ transform: rotate(360deg); }
+}
+
+.ticket__header{padding:6px 22px 14px}
+.ticket__names{
+  margin:0;
+  font-family:var(--serif);
+  text-align:center;
+  font-size:clamp(30px, 6vw, 54px);
+  letter-spacing:.03em;
+  color:var(--navy);
+}
+.ticket__amp{
+  font-weight:500;
+  opacity:.85;
+}
+
+.ticket__body{
+  position:relative;
+  padding:16px 18px 18px 58px;
+}
+.ticket__side{
+  position:absolute;
+  left:14px;
+  top:18px;
+  writing-mode:vertical-rl;
+  transform:rotate(180deg);
+  font-weight:700;
+  letter-spacing:.14em;
+  font-size:15.5px;
+  color:#fff;
+  background:var(--navy);
+  border-radius:12px;
+  padding:10px 8px;
+}
+
+.ticket__grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+.ticket__cell{
+  border:1px solid rgba(14,27,44,.25);
+  border-radius:14px;
+  padding:12px 12px;
+  background:rgba(255,255,255,.55);
+}
+.ticket__cell--wide{grid-column:1 / -1}
+.ticket__label{
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.12em;
+  color:rgba(14,27,44,.7);
+}
+.ticket__value{
+  margin-top:6px;
+  font-weight:700;
+  color:var(--navy);
+  letter-spacing:.04em;
+}
+
+/* «Штамп» */
+.stamp{
+  position:absolute;
+  right:16px;
+  bottom:-20px;
+  width:138px;
+  height:138px;
+  border-radius:999px;
+  border:3px solid rgba(14,27,44,.85);
+  transform:rotate(-12deg);
+  display:grid;
+  place-items:center;
+  background:rgba(255,255,255,.25);
+}
+.stamp__inner{
+  width:118px;
+  height:118px;
+  border-radius:999px;
+  border:2px solid rgba(14,27,44,.55);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:4px;
+  text-align:center;
+  color:var(--navy);
+}
+.stamp__row{
+  display:flex;
+  gap:10px;
+  font-weight:800;
+  font-size:12px;
+  opacity:.9;
+}
+.stamp__big{
+  font-family:var(--serif);
+  font-weight:700;
+  letter-spacing:.08em;
+  font-size:14px;
+}
+.stamp__heart{
+  color:var(--accent);
+  font-size:14px;
+}
+
+.ticket__footer{
+  padding:16px 18px 22px;
+  text-align:center;
+}
+.ticket__footerTitle{
+  font-family:var(--serif);
+  font-size:20px;
+  letter-spacing:.08em;
+  color:var(--navy);
+}
+
+/* =========================
+   Календарь
+   ========================= */
+.calendarCard{
+  margin:18px auto 10px;
+  width:min(520px, 100%);
+  background:#f6f4ef;
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:22px;
+  box-shadow:var(--shadow);
+  padding:18px 14px 16px;
+}
+.calendarCard__month{
+  font-family:var(--serif);
+  text-align:center;
+  font-size:clamp(26px, 4.2vw, 40px);
+  letter-spacing:.12em;
+  color:var(--navy);
+  margin-bottom:8px;
+}
+.calendarCard__grid{
+  display:grid;
+  grid-template-columns:repeat(7, 1fr);
+  gap:8px;
+  padding:8px 6px 0;
+}
+.calHead{
+  font-size:12px;
+  font-weight:700;
+  color:rgba(14,27,44,.65);
+  text-align:center;
+  padding:6px 0;
+}
+.calDay{
+  height:40px;
+  border-radius:12px;
+  display:grid;
+  place-items:center;
+  color:var(--navy);
+  font-weight:600;
+  background:rgba(255,255,255,.65);
+  border:1px solid rgba(14,27,44,.12);
+}
+.calEmpty{
+  height:40px;
+  border-radius:12px;
+  background:transparent;
+  border:1px dashed rgba(14,27,44,.10);
+}
+
+/* Сердце ФОНОМ, "26" видно сверху */
+.calHeart{
+  background-color: transparent !important;
+  border: 0 !important;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 120% 130%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23b51e25' d='M12 21s-6.716-4.35-9.428-8.074C.83 10.63 1.34 7.62 3.54 5.9c1.77-1.39 4.31-1.07 5.84.65L12 9.24l2.62-2.69c1.53-1.72 4.07-2.04 5.84-.65 2.2 1.72 2.71 4.73.97 7.03C18.716 16.65 12 21 12 21z'/%3E%3C/svg%3E");
+
+  color: #fff;
+  font-weight: 800;
+  text-shadow: 0 1px 2px rgba(0,0,0,.25);
+}
+
+.bigDate{
+  text-align:center;
+  font-family:var(--serif);
+  font-size:clamp(28px, 5vw, 46px);
+  color:#fff;
+  letter-spacing:.08em;
+  margin-top:10px;
+}
+
+/* =========================
+   Тайминг
+   ========================= */
+.timing{
+  margin:0 auto;
+  width:min(640px, 100%);
+  background:linear-gradient(180deg, var(--navy), var(--navy2));
+  border-radius:22px;
+  border:1px solid rgba(14,27,44,.22);
+  box-shadow:var(--shadow);
+  padding:22px 18px 18px;
+  position:relative;
+  overflow:hidden;
+}
+.timing::before{
+  content:"";
+  position:absolute;
+  left:18px;
+  right:18px;
+  top:0;
+  height:10px;
+  background:
+    radial-gradient(circle at 12px 10px, transparent 10px, rgba(255,255,255,.08) 11px) repeat-x;
+  background-size:24px 12px;
+  opacity:.55;
+}
+.timing__grid{
+  margin-top:10px;
+  display:grid;
+  gap:12px;
+}
+.timing__row{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:16px;
+  align-items:center;
+  padding:14px 14px;
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(255,255,255,.04);
+}
+.timing__what{
+  color:rgba(255,255,255,.82);
+  line-height:1.25;
+}
+.timing__time{
+  font-family:var(--serif);
+  font-size:clamp(28px, 5vw, 44px);
+  color:#fff;
+  letter-spacing:.08em;
+}
+
+/* =========================
+   Дресс-код
+   ========================= */
+.palette{
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  margin:18px 0 16px;
+}
+.dot{
+  width:44px;
+  height:44px;
+  border-radius:999px;
+  background:var(--c);
+  border:1px solid rgba(14,27,44,.18);
+  box-shadow:0 8px 18px rgba(0,0,0,.06);
+}
+.divider{
+  margin:18px auto 0;
+  width:min(520px, 100%);
+  border-top:2px dashed rgba(14,27,44,.35);
+}
+
+/* =========================
+   Фото-секция + отсчёт
+   ========================= */
+.photoHero{
+  position:absolute;
+  inset:0;
+}
+.photoHero img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:grayscale(100%);
+}
+.photoHero__overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg, rgba(14,27,44,.75), rgba(14,27,44,.55));
+}
+.section--photo{
+  position:relative;
+  min-height:520px;
+  display:flex;
+  align-items:center;
+}
+.countdown{
+  width:min(760px, 100%);
+  margin:0 auto;
+  text-align:center;
+  color:#fff;
+   margin-top: 200px;   /* увеличивай/уменьшай: 40–140px */
+}
+.countdown__title{
+  font-family:var(--serif);
+  letter-spacing:.10em;
+  font-size:clamp(18px, 3.8vw, 26px);
+  margin-bottom:18px;
+  opacity:.95;
+}
+.countdown__grid{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:12px;
+  width:min(760px, 100%);
+  margin:0 auto;
+}
+.countdown__cell{
+  padding:14px 10px;
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.06);
+  backdrop-filter: blur(6px);
+}
+.countdown__num{
+  font-family:var(--serif);
+  font-size:clamp(30px, 6vw, 58px);
+  letter-spacing:.10em;
+}
+.countdown__lbl{
+  margin-top:6px;
+  opacity:.85;
+  font-size:12px;
+  letter-spacing:.12em;
+}
+
+/* =========================
+   Пожелания
+   ========================= */
+.wishCard{
+  margin:0 auto;
+  width:min(640px, 100%);
+  background:linear-gradient(180deg, var(--navy), var(--navy2));
+  border-radius:22px;
+  border:1px solid rgba(14,27,44,.22);
+  box-shadow:var(--shadow);
+  padding:22px 18px 18px;
+  text-align:center;
+}
+.wishCard__nav{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+  margin:12px 0 14px;
+  color:rgba(255,255,255,.9);
+}
+.navBtn{
+  width:44px;
+  height:44px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.18);
+  background:rgba(255,255,255,.08);
+  color:#fff;
+  font-size:18px;
+}
+.wishCard__pos{
+  letter-spacing:.12em;
+  opacity:.9;
+}
+
+/* =========================
+   Контакты
+   ========================= */
+.contacts{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap:14px;
+  margin-top:16px;
+}
+.contact{
+  border:1px solid rgba(14,27,44,.18);
+  border-radius:18px;
+  padding:14px 14px;
+  background:rgba(255,255,255,.55);
+  box-shadow:0 10px 24px rgba(0,0,0,.05);
+}
+.contact__role{
+  font-size:12px;
+  letter-spacing:.12em;
+  font-weight:800;
+  color:rgba(14,27,44,.62);
+}
+.contact__name{
+  font-family:var(--serif);
+  font-size:22px;
+  margin-top:6px;
+  color:var(--navy);
+}
+.contact__link{
+  display:inline-block;
+  margin-top:8px;
+  color:var(--navy);
+  text-decoration:none;
+  font-weight:700;
+}
+.miniFooter{
+  margin-top:22px;
+  text-align:center;
+  color:rgba(14,27,44,.55);
+  font-size:13px;
+}
+
+/* =========================
+   Модалка
+   ========================= */
+.modal{
+  position:fixed;
+  inset:0;
+  display:none;
+  z-index:50;
+}
+.modal.isOpen{display:block}
+.modal__backdrop{
+  position:absolute;
+  inset:0;
+  background:rgba(10,15,25,.55);
+}
+.modal__panel{
+  position:relative;
+  width:min(560px, 92vw);
+  margin:9vh auto 0;
+  background:#f6f4ef;
+  border-radius:20px;
+  box-shadow:0 18px 50px rgba(0,0,0,.25);
+  border:1px solid rgba(14,27,44,.18);
+  padding:16px 16px 14px;
+}
+.modal__head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  padding-bottom:10px;
+  border-bottom:1px solid rgba(14,27,44,.12);
+}
+.modal__title{
+  font-family:var(--serif);
+  font-size:22px;
+  color:var(--navy);
+}
+.iconBtn{
+  width:40px;
+  height:40px;
+  border-radius:14px;
+  border:1px solid rgba(14,27,44,.18);
+  background:rgba(255,255,255,.75);
+  font-size:18px;
+}
+.giftList{
+  margin:12px 0 0;
+  padding-left:18px;
+  color:rgba(14,27,44,.9);
+  line-height:1.55;
+}
+.modal__note{
+  margin:12px 0 0;
+  color:rgba(14,27,44,.65);
+  font-size:14px;
+}
+
+/* =========================
+   Адаптив
+   ========================= */
+@media (max-width: 740px){
+  .contacts{grid-template-columns:1fr}
+  .ticket__body{padding-right:14px}
+  .stamp{transform:rotate(-10deg) scale(.92)}
+  
+}
+/* ===== Глобус + самолёт вокруг ===== */
+
+.ticket__globe{
+  padding: 10px 18px 0;
+  display:flex;
+  justify-content:center;
+}
+
+.globeStage{
+  position:relative;
+  width:min(320px, 78vw);
+  aspect-ratio:1 / 1;
+}
+
+/* Глобус */
+.globeSvg{
+  width:100%;
+  height:100%;
+  display:block;
+}
+
+.globeStrokeOuter{
+  stroke: rgba(20,32,57,.55);
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+
+.globeStrokeInner{
+  stroke: rgba(20,32,57,.38);
+  stroke-width: 1.3;
+  vector-effect: non-scaling-stroke;
+}
+
+.globePath{
+  stroke: rgba(20,32,57,.35);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+/* Орбита */
+.airOrbit{
+  position:absolute;
+  inset: -6px;            /* орбита чуть больше глобуса, но не обрежется билетом */
+  border-radius:50%;
+  z-index:5;              /* поверх глобуса */
+  pointer-events:none;
+
+  /* старт как на рефе (сверху-справа) */
+  transform: rotate(-35deg);
+  transform-origin:center;
+
+  animation: orbitSpin 10s linear infinite;
+}
+
+/* можно добавить тонкую круговую линию орбиты (если надо) */
+/*
+.airOrbit::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+  border:1px solid rgba(20,32,57,.12);
+}
+*/
+
+.airPlaneLock{
+  --tilt: 40deg;          /* наклон самолёта */
+  position:absolute;
+  left:50%;
+  top:6px;                 /* держим внутри, чтобы не обрезался */
+  transform: translate(-50%, 0) rotate(var(--tilt));
+  transform-origin:center;
+
+  /* компенсируем вращение, чтобы самолёт не “вертелся” */
+  animation: orbitCounter 10s linear infinite;
+  
+ }
+
+.airPlaneSvg{
+  width:52px;              /* сделай 44–60px под вкус */
+  height:auto;
+  display:block;
+  filter: drop-shadow(0 6px 10px rgba(0,0,0,.10));
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: planeSelfSpin var(--planeSelfSpinDuration) linear infinite;
+}
+
+@keyframes orbitSpin{
+  to{ transform: rotate(325deg); } /* -35deg + 360deg */
+}
+
+
+/* на случай “уменьшить анимацию” */
+@media (prefers-reduced-motion: reduce){
+  .airOrbit, .airPlaneLock{ animation: none !important; }
+}
+
+
+
+.dateBlack{
+  color:#000;
+  font-weight:700;
+}
+.section.section--paper:first-of-type{
+  background: #0e1b2c;
+}
+
+}
+@keyframes spinOrbit{
+  to{ transform: rotate(325deg); } /* -35deg + 360deg */
+}
+@keyframes spinOrbitReverse{
+  to{ transform: translate(-50%, -65%) rotate(-360deg); }
+}.
